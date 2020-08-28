@@ -23,6 +23,7 @@ async function generateCurrencyComponent() {
    currencyComponent.appendChild(componentItemContainerButton);
    var rates = await getApiData("https://api.exchangerate-api.com/v4/latest/GBP");
    loopThroughObjectDataForSelections(rates, addOptionToSelectionElement);
+   inputAmount.focus();
 }
 
 generateCurrencyComponent();

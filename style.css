@@ -68,6 +68,7 @@ button:focus {
    border: none;
    text-align: right;
    caret-color: var(--blueNavy);
+   width: 80%;
 }
 
 .currency-input::placeholder {
@@ -84,6 +85,14 @@ button:focus {
    background-color: var(--transparent);
    color: var(--white);
    border: none;
+}
+
+.currency-selection:nth-of-type(1) {
+   background-color: var(--black);
+}
+
+.currency-selection:nth-of-type(2) {
+   background-color: var(--darkGray);
 }
 
 .currency-exchange-btn {
