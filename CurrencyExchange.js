@@ -1,6 +1,9 @@
 var intervalExpityTimer
 async function generateCurrencyComponent() {
     const currencyComponent = document.querySelector("#currency-exhange-component");
+    const titleComponent = createHtmlElement("h3", "", "title-currency-exchange", "");
+    titleComponent.innerHTML = `<i class="fa fa-line-chart" aria-hidden="true"></i> Currecncy Exchange Component`
+    currencyComponent.appendChild(titleComponent);
     const componentItemContainerAmmout = createHtmlElement("div", "", "currency-component-item", "");
     const inputAmount = createHtmlElement("input", "amount-input", "currency-input", "");
     inputAmount.addEventListener("input", (e) => { handleInput(e); });
@@ -8,9 +11,11 @@ async function generateCurrencyComponent() {
     const imgAmount = createHtmlElement("img", "", "country-flag-image", "");
     const selectionCurrencyAmount = createHtmlElement("select", "amount-selection", "currency-selection", "");
     selectionCurrencyAmount.addEventListener("change", (e) => { handleChangeCurrency(e); });
+    const errorMessageAmount = createHtmlElement("label", "", "error-message", "");
     componentItemContainerAmmout.appendChild(imgAmount);
     componentItemContainerAmmout.appendChild(selectionCurrencyAmount);
     componentItemContainerAmmout.appendChild(inputAmount);
+    componentItemContainerAmmout.appendChild(errorMessageAmount);
     const componentItemContainerResult = createHtmlElement("div", "", "currency-component-item", "");
     const inputResult = createHtmlElement("input", "result-input", "currency-input", "");
     inputResult.placeholder = "0";
@@ -18,14 +23,15 @@ async function generateCurrencyComponent() {
     inputResult.addEventListener("input", (e) => { handleInput(e); });
     const selectionCurrencyResult = createHtmlElement("select", "result-selection", "currency-selection", "");
     selectionCurrencyResult.addEventListener("change", (e) => { handleChangeCurrency(e); });
+    const errorMessageResult = createHtmlElement("label", "", "error-message", "");
     componentItemContainerResult.appendChild(imgResult);
     componentItemContainerResult.appendChild(selectionCurrencyResult);
     componentItemContainerResult.appendChild(inputResult);
+    componentItemContainerResult.appendChild(errorMessageResult);
     const componentItemContainerButton = createHtmlElement("div", "", "currency-component-item", "");
     const exchangeBtn = createHtmlElement("button", "exchange-btn", "currency-exchange-btn", "Exchange");
     exchangeBtn.disabled = true;
     exchangeBtn.addEventListener("click", (e) => { handleExchangeCurrency(e) });
-    const errorMessage = createHtmlElement("p", "", "error-message", "");
     const exchangeMessage = createHtmlElement("p", "", "exchange-message", "");
     const countDownContainer = createHtmlElement("div", "", "countdown-container", "");
     const minutesParent = createHtmlElement("div", "", "minutes-parent", "");
@@ -38,7 +44,6 @@ async function generateCurrencyComponent() {
     countDownContainer.appendChild(secondsParent);
     componentItemContainerButton.appendChild(exchangeMessage);
     componentItemContainerButton.appendChild(countDownContainer);
-    componentItemContainerButton.appendChild(errorMessage);
     componentItemContainerButton.appendChild(exchangeBtn);
     const conversionRateDisplayContainer = createHtmlElement("button", "rate-display", "rate-display-container", "");
     const exhangeRate = createHtmlElement("span", "rate-display", "rate-display", "1 GBP = 1.0000 GBP");
@@ -95,12 +100,11 @@ function handleChangeCurrency(e) {
 
 function handleInput(e) {
     const value = e.target.value;
-    const errorMsg = document.querySelector(".error-message");
+    const errorMsg = e.target.nextElementSibling;
     const exchangeBtn = document.querySelector(".currency-exchange-btn");
-    isNaN(value) ? (errorMsg.innerHTML = "Enter a valid amount") : (errorMsg.innerHTML = "");
-    if (!isNaN(value)) doCurrencyConversion(e.target);
+    isNaN(value) && value ? (errorMsg.innerHTML = "Enter a valid amount") : (errorMsg.innerHTML = "");
+    if (!isNaN(value) && value) doCurrencyConversion(e.target);
     !isNaN(value) && value ? (exchangeBtn.disabled = false) : (exchangeBtn.disabled = true);
-
 }
 
 async function doCurrencyConversion(inputElement) {

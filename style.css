@@ -36,10 +36,24 @@ body {
 }
 
 .error-message {
+  position: absolute;
+  width: auto;
+  bottom: 15%;
+  right: 3%;
   color: var(--red);
-  width: 100%;
   text-align: center;
 }
+
+.title-currency-exchange{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 1;
+  color: var(--white);
+  transform-origin: 50% 50%;
+  transform:translate(-50%,-10%);  
+}
+
 
 .exchange-message{
   color: var(--white);
@@ -113,7 +127,7 @@ button:focus {
 
 .currency-component-item:nth-of-type(3){
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-evenly;
 }
 
 .country-flag-image {
@@ -123,6 +137,7 @@ button:focus {
 }
 
 .currency-input {
+  position: relative;
   font-size: 1rem;
   padding: 0.5rem;
   color: var(--white);
@@ -140,7 +155,7 @@ button:focus {
 .currency-input:focus,
 .currency-selection:focus {
   outline: none;
-  box-shadow: 0 0 0.2rem var(--blueNavy);
+ border-bottom: 1px solid var(--blueNavy);
 }
 
 .currency-selection {
