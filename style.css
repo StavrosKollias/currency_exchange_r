@@ -91,12 +91,15 @@ body {
 
 button:focus {
   outline: none;
-  box-shadow: 0 0 0.3rem var(--blueNavy);
+  box-shadow: 0 0 0.5rem var(--blueNavy);
 }
 
 #currency-exhange-component {
+  position: relative;
   display: flex;
   flex-direction: column;
+  max-width: 50rem;
+  margin: auto;
 }
 
 .ui-theme-a {
@@ -159,6 +162,7 @@ button:focus {
 }
 
 .currency-selection {
+  font-size: 1rem;
   padding: 0.5rem;
   background-color: var(--transparent);
   color: var(--white);
@@ -182,10 +186,12 @@ button:focus {
   max-width: 25rem;
   height: 2.5rem;
   color: var(--white);
+  transition: all 0.45s ease-in-out;
 }
 
 .currency-exchange-btn:hover {
-  box-shadow: 0 0 0.3rem var(--black);
+  cursor: pointer;
+  box-shadow: 0 0 0.5rem var(--black);
 }
 
 .currency-exchange-btn:disabled {
@@ -235,5 +241,5 @@ button:focus {
 
 .reverse-btn:hover,.rate-display-container:hover{
   cursor: pointer;
-  box-shadow: 0 -0.2px 0.1rem var(--blueNavy);
+  box-shadow: 0 -0.2px 0.3rem var(--blueNavy);
 }

@@ -2,7 +2,7 @@ var intervalExpityTimer
 async function generateCurrencyComponent() {
     const currencyComponent = document.querySelector("#currency-exhange-component");
     const titleComponent = createHtmlElement("h3", "", "title-currency-exchange", "");
-    titleComponent.innerHTML = `<i class="fa fa-line-chart" aria-hidden="true"></i> Currecncy Exchange Component`
+    titleComponent.innerHTML = `<i class="fa fa-line-chart" aria-hidden="true"></i> Currecncy Exchange`
     currencyComponent.appendChild(titleComponent);
     const componentItemContainerAmmout = createHtmlElement("div", "", "currency-component-item", "");
     const inputAmount = createHtmlElement("input", "amount-input", "currency-input", "");
