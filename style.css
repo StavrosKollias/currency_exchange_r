@@ -1,0 +1,144 @@
+:root {
+   --black: #000000;
+   --white: white;
+   --darkGray: #1c1c1e;
+   --lightGray: #aaa7a7;
+   --blueNavy: #10498c;
+   --blue: blue;
+   --grayBlue: rgb(46, 45, 70);
+   --transparent: rgba(0, 0, 0, 0);
+}
+
+html {
+   font-size: 16px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 250px) {
+   html {
+      font-size: 16px;
+   }
+}
+
+body {
+   margin: 0;
+   background-color: var(--darkGray);
+   height: 100vh;
+}
+
+button:focus {
+   outline: none;
+}
+
+#currency-exhange-component {
+   display: flex;
+   flex-direction: column;
+}
+
+.ui-theme-a {
+   width: 100%;
+   height: calc(100vh - 2 * 5vh);
+   padding: 2vh 0;
+   background-color: var(--black);
+}
+
+.currency-component-item {
+   position: relative;
+   padding: 1rem;
+   width: calc(100% - 2 * 1rem);
+   height: calc(30vh - 2 * 1rem);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.currency-component-item:nth-of-type(1) {
+   background-color: var(--black);
+}
+
+.currency-component-item:nth-of-type(2) {
+   background-color: var(--darkGray);
+}
+
+.currency-input {
+   font-size: 1rem;
+   padding: 0.5rem;
+   color: var(--white);
+   background-color: var(--transparent);
+   border: none;
+   text-align: right;
+   caret-color: var(--blueNavy);
+}
+
+.currency-input::placeholder {
+   color: var(--lightGray);
+}
+
+.currency-input:focus,
+.currency-selection:focus {
+   outline: none;
+}
+
+.currency-selection {
+   padding: 0.5rem;
+   background-color: var(--transparent);
+   color: var(--white);
+   border: none;
+}
+
+.currency-exchange-btn {
+   border: none;
+   padding: 0.5rem;
+   position: absolute;
+   border-radius: 10px;
+   bottom: 1rem;
+   background-color: var(--blueNavy);
+   width: 80%;
+   height: 2.5rem;
+   color: var(--white);
+   transform-origin: 50% 50%;
+   left: 50%;
+   transform: translateX(-50%);
+   transition: all 0.45s ease-in-out;
+}
+
+.currency-exchange-btn:hover {
+   box-shadow: 0 0 0.3rem var(--black);
+}
+
+.currency-exchange-btn:disabled {
+   opacity: 0.1;
+}
+
+.rate-display {
+   border: none;
+   background-color: var(--black);
+   color: var(--blueNavy);
+   width: auto;
+   font-size: 0.8rem;
+   padding: 0.4rem;
+   border-radius: 10px;
+   position: absolute;
+   transform-origin: 50% 50%;
+   bottom: -0.8rem;
+   left: 50%;
+   transform: translate(-50%, 0);
+   z-index: 2;
+   /* box-shadow: 0 -0.25px 0rem 0.01px var(--white); */
+}
+
+.reverse-btn {
+   background-color: var(--black);
+   color: var(--blueNavy);
+   border: none;
+   /* box-shadow: 0 -0.25px 0rem 0.01px var(--white); */
+   width: auto;
+   font-size: 0.8rem;
+   padding: 0.4rem;
+   border-radius: 50%;
+   position: absolute;
+   bottom: -0.8rem;
+   left: 10%;
+   transform: translate(-10%, 0);
+   z-index: 2;
+}
