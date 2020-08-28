@@ -7,6 +7,7 @@
    --blue: blue;
    --grayBlue: rgb(46, 45, 70);
    --transparent: rgba(0, 0, 0, 0);
+   --red: #ff0000;
 }
 
 html {
@@ -16,7 +17,7 @@ html {
 
 @media only screen and (max-width: 250px) {
    html {
-      font-size: 16px;
+      font-size: 14px;
    }
 }
 
@@ -24,6 +25,12 @@ body {
    margin: 0;
    background-color: var(--darkGray);
    height: 100vh;
+}
+
+.error-message {
+   color: var(--red);
+   width: 100%;
+   text-align: center;
 }
 
 button:focus {
@@ -60,6 +67,10 @@ button:focus {
    background-color: var(--darkGray);
 }
 
+.country-flag-image {
+   width: 10%;
+}
+
 .currency-input {
    font-size: 1rem;
    padding: 0.5rem;
@@ -72,7 +83,7 @@ button:focus {
 }
 
 .currency-input::placeholder {
-   color: var(--lightGray);
+   color: var(--lightGray) !important;
 }
 
 .currency-input:focus,
@@ -91,7 +102,7 @@ button:focus {
    background-color: var(--black);
 }
 
-.currency-selection:nth-of-type(2) {
+#result-selection {
    background-color: var(--darkGray);
 }
 
@@ -150,4 +161,8 @@ button:focus {
    left: 10%;
    transform: translate(-10%, 0);
    z-index: 2;
+}
+
+.reverse-btn i {
+   padding: 0 0.3rem;
 }
