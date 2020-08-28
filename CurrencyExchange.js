@@ -7,7 +7,7 @@ async function generateCurrencyComponent() {
     inputAmount.placeholder = "0";
     const imgAmount = createHtmlElement("img", "", "country-flag-image", "");
     const selectionCurrencyAmount = createHtmlElement("select", "amount-selection", "currency-selection", "");
-    selectionCurrencyAmount.addEventListener("change", (e) => { handleChangeCurency(e); });
+    selectionCurrencyAmount.addEventListener("change", (e) => { handleChangeCurrency(e); });
     componentItemContainerAmmout.appendChild(imgAmount);
     componentItemContainerAmmout.appendChild(selectionCurrencyAmount);
     componentItemContainerAmmout.appendChild(inputAmount);
@@ -17,7 +17,7 @@ async function generateCurrencyComponent() {
     const imgResult = createHtmlElement("img", "", "country-flag-image", "");
     inputResult.addEventListener("input", (e) => { handleInput(e); });
     const selectionCurrencyResult = createHtmlElement("select", "result-selection", "currency-selection", "");
-    selectionCurrencyResult.addEventListener("change", (e) => { handleChangeCurency(e); });
+    selectionCurrencyResult.addEventListener("change", (e) => { handleChangeCurrency(e); });
     componentItemContainerResult.appendChild(imgResult);
     componentItemContainerResult.appendChild(selectionCurrencyResult);
     componentItemContainerResult.appendChild(inputResult);
@@ -85,7 +85,7 @@ function handleReverseCurrencies() {
     if (!isNaN(selectionMenus[0].nextElementSibling.value)) doCurrencyConversion(selectionMenus[0].nextElementSibling);
 }
 
-function handleChangeCurency(e) {
+function handleChangeCurrency(e) {
     const inputAmount = document.querySelector("#amount-input");
     const value = inputAmount.value;
     const image = e.target.previousElementSibling;
