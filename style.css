@@ -3,7 +3,7 @@
   --white: white;
   --darkGray: #1c1c1e;
   --lightGray: #aaa7a7;
-  --blueNavy: #10498c;
+  --blueNavy: #10378c;
   --blueTansp: #104a8c63;
   --grayBlue: rgb(46, 45, 70);
   --transparent: rgba(0, 0, 0, 0);
@@ -87,7 +87,7 @@ button:focus {
 
 .ui-theme-a {
   width: 100%;
-  height: calc(100vh - 2 * 5vh);
+  height: calc(auto - 2 * 5vh);
   padding: 2vh 0;
   background-color: var(--black);
 }
@@ -182,16 +182,17 @@ button:focus {
   background-color: var(--black);
   color: var(--blueNavy);
   width: auto;
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 10px;
   position: absolute;
   transform-origin: 50% 50%;
-  bottom: -0.8rem;
+  bottom: -0.9rem;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 2;
-  /* box-shadow: 0 -0.25px 0rem 0.01px var(--white); */
+  transition: all 0.45s ease-in-out;
+  text-shadow: 0 0 0.2rem var(--blueNavy);
 }
 
 .rate-display {
@@ -202,18 +203,22 @@ button:focus {
   background-color: var(--black);
   color: var(--blueNavy);
   border: none;
-  /* box-shadow: 0 -0.25px 0rem 0.01px var(--white); */
   width: auto;
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 0.4rem;
   border-radius: 50%;
   position: absolute;
-  bottom: -0.8rem;
+  bottom: -0.7rem;
   left: 10%;
   transform: translate(-10%, 0);
   z-index: 2;
 }
 
 .reverse-btn i {
-  padding: 0 0.3rem;
+  padding: 0 0.4rem;
+}
+
+.reverse-btn:hover,.rate-display-container:hover{
+  cursor: pointer;
+  box-shadow: 0 -0.2px 0.1rem var(--blueNavy);
 }

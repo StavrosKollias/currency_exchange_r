@@ -64,12 +64,13 @@ generateCurrencyComponent();
 
 function handleExchangeCurrency(e) {
     clearInterval(intervalExpityTimer);
-    const exchangeMessage = document.querySelector(".exchange-message");
     const inputAmountCalue = document.querySelector("#amount-input").value;
     const selectedCurrencyAmount = document.querySelector("#amount-selection").options[document.querySelector("#amount-selection").selectedIndex].innerText
     const inputResultValue = document.querySelector("#result-input").value;
     const selectedCurrencyResult = document.querySelector("#result-selection").options[document.querySelector("#result-selection").selectedIndex].innerText
-    exchangeMessage.innerText = `${inputAmountCalue} ${selectedCurrencyAmount} is equivalent to ${inputResultValue} ${selectedCurrencyResult}`;
+    document.querySelector(".exchange-message").innerText = `${inputAmountCalue} ${selectedCurrencyAmount} is equivalent to ${inputResultValue} ${selectedCurrencyResult}`;
+    document.querySelector(".minutes-count-down").style.transform = `rotateX(${0}deg) scale(1,${Math.pow(-1, 0)})`
+    document.querySelector(".seconds-count-down").style.transform = `rotateX(${0}deg) scale(1,${Math.pow(-1, 0)})`
     startExpiryTimer(10, 0)
 }
 
@@ -89,7 +90,7 @@ function handleChangeCurency(e) {
     const value = inputAmount.value;
     const image = e.target.previousElementSibling;
     image.src = e.target.options[e.target.selectedIndex].dataset.dataImage;
-    !isNaN(value) ? doCurrencyConversion(inputAmount) : false;
+    if (!isNaN(value)) doCurrencyConversion(inputAmount);
 }
 
 function handleInput(e) {
@@ -97,23 +98,23 @@ function handleInput(e) {
     const errorMsg = document.querySelector(".error-message");
     const exchangeBtn = document.querySelector(".currency-exchange-btn");
     isNaN(value) ? (errorMsg.innerHTML = "Enter a valid amount") : (errorMsg.innerHTML = "");
-    !isNaN(value) ? doCurrencyConversion(e.target) : false;
-    !isNaN(value) ? (exchangeBtn.disabled = false) : (exchangeBtn.disabled = true);
+    if (!isNaN(value)) doCurrencyConversion(e.target);
+    !isNaN(value) && value ? (exchangeBtn.disabled = false) : (exchangeBtn.disabled = true);
+
 }
 
 async function doCurrencyConversion(inputElement) {
     var otherInput;
-    const amountToConvert = Number(inputElement.value);
     const selectedCurrencyMenu = inputElement.previousElementSibling;
     const selectedCurrency = selectedCurrencyMenu.options[selectedCurrencyMenu.selectedIndex].innerText;
     document.querySelectorAll(".currency-input").forEach((e) => {
-        e.id != inputElement.id ? (otherInput = e) : false;
+        if (e.id != inputElement.id) otherInput = e;
     });
     const convertCurrency = otherInput.previousElementSibling.options[otherInput.previousElementSibling.selectedIndex].innerText;
     const data = await getApiData("https://api.exchangerate-api.com/v4/latest/GBP");
     const newCurency = 1 / data[selectedCurrency];
     const newRate = data[convertCurrency] * newCurency;
-    const result = amountToConvert * newRate;
+    const result = Number(inputElement.value) * newRate;
     otherInput.value = result.toFixed(4);
     updateRateDisplay(selectedCurrency, convertCurrency, newRate);
 }
@@ -126,8 +127,8 @@ function updateRateDisplay(selectedCurrency, convertCurrency, rate) {
 function createHtmlElement(tagname, id, className, innerText) {
     const element = document.createElement(tagname);
     element.className = className;
-    id ? (element.id = id) : false;
-    innerText ? (element.innerText = innerText) : false;
+    if (id) element.id = id;
+    if (innerText) element.innerText = innerText;
     return element;
 }
 
@@ -186,8 +187,8 @@ function startExpiryTimer(minutes, seconds) {
 }
 
 function changeTimerText(minutesCont, minutes, secondsCont, seconds, counterSeconds, counterMinutes) {
-    minutesCont.innerText != minutes.toString() + "'" ? (minutesCont.style.transform = `rotateX(${180 * counterMinutes}deg) scale(1,${Math.pow(-1, counterMinutes)})`) : false;
-    secondsCont.innerText != seconds.toString() + '"' ? (secondsCont.style.transform = `rotateX(${180 * counterSeconds}deg) scale(1,${Math.pow(-1, counterSeconds)})`) : false;
+    if (minutesCont.innerText != minutes.toString() + "'") minutesCont.style.transform = `rotateX(${180 * counterMinutes}deg) scale(1,${Math.pow(-1, counterMinutes)})`;
+    if (secondsCont.innerText != seconds.toString() + '"') secondsCont.style.transform = `rotateX(${180 * counterSeconds}deg) scale(1,${Math.pow(-1, counterSeconds)})`;
     minutesCont.innerText = `${minutes}'`;
     secondsCont.innerText = `${seconds}"`;
 }
