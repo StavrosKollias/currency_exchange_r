@@ -3,7 +3,7 @@
   --white: white;
   --darkGray: #1c1c1e;
   --lightGray: #aaa7a7;
-  --blueNavy: #10378c;
+  --blueNavy: #1447b6;
   --blueTansp: #104a8c63;
   --grayBlue: rgb(46, 45, 70);
   --transparent: rgba(0, 0, 0, 0);
@@ -134,9 +134,7 @@ button:focus {
 }
 
 .country-flag-image {
-  width: 10%;
-  max-width: 4rem;
-  min-width: 3rem;
+  width: 2rem;
 }
 
 .currency-input {
