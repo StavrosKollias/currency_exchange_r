@@ -21,7 +21,7 @@ async function generateCurrencyComponent() {
     const inputResult = createHtmlElement("input", "result-input", "currency-input", "");
     inputResult.placeholder = "Enter amount";
     const imgResult = createHtmlElement("img", "", "country-flag-image", "");
-    inputResult.addEventListener("input", (e) => { handleInput(e); });
+    inputResult.addEventListener("input", (e) => { handleAmountInput(e.target); });
     const selectionCurrencyResult = createHtmlElement("select", "result-selection", "currency-selection", "");
     selectionCurrencyResult.addEventListener("change", (e) => { handleChangeCurrency(e); });
     const errorMessageResult = createHtmlElement("label", "", "error-message", "");
